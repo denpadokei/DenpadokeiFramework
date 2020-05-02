@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace DenpadokeiFramework.Interfaces
 {
-    public interface ILoadingService
+    public interface ILoadingService : INotifyPropertyChanged
     {
         public bool IsLoading { get; set; }
 
