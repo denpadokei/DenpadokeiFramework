@@ -6,6 +6,6 @@ namespace DenpadokeiFramework.Interfaces
 {
     public interface IDataContextInitializable
     {
-        void OnInitialize();
+        void OnInitialize(object parameter);
     }
 }

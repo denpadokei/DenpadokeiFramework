@@ -35,7 +35,12 @@ namespace DenpadokeiFramework.Bases
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
-        public void OnInitialize()
+        /// <summary>
+        /// イベントLoaded時に呼び出すといい感じになります。
+        /// コンストラクタが終わった後に呼び出されるので依存性が変数にはコンテナの中身が注入済みです。
+        /// </summary>
+        /// <param name="parameter">xamlから渡されるパラメーター</param>
+        public virtual void OnInitialize(object parameter)
         {
             WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(
                 this.loadingService_, nameof(INotifyPropertyChanged.PropertyChanged), this.OnLoadingServicePropertyChanged);
