@@ -122,12 +122,11 @@ namespace DenpadokeiFramework.Services
         {
             // スレッドを起動して、そこで dispatcher を実行する
             var dispatcherSource = new TaskCompletionSource<Dispatcher>();
-            var thread = new Thread(new ThreadStart(() =>
+            Task.Run(() =>
             {
                 dispatcherSource.SetResult(Dispatcher.CurrentDispatcher);
                 Dispatcher.Run();
-            }));
-            thread.Start();
+            });
             this.dispatcher_ = dispatcherSource.Task.Result; // メンバ変数に dispatcher を保存
 
             // 表のディスパッチャーが終了するタイミングで、こちらのディスパッチャーも終了する
