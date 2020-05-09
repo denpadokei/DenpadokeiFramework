@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DenpadokeiFramework.Interfaces
 {
@@ -9,8 +10,8 @@ namespace DenpadokeiFramework.Interfaces
     {
         public bool IsLoading { get; set; }
 
-        public void Load(Action action);
+        public Task LoadAsync(Action action);
 
-        public void Load(Func<bool> func, Action reLoad);
+        public Task LoadAsync(Func<bool> func, Action reLoad);
     }
 }

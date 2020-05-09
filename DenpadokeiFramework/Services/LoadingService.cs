@@ -45,7 +45,7 @@ namespace DenpadokeiFramework.Services
         /// 非同期で任意の処理を行います。
         /// </summary>
         /// <param name="action">非同期で行いたい処理<see cref="Action"/></param>
-        public virtual async void Load(Action action)
+        public virtual async Task LoadAsync(Action action)
         {
             try {
                 this.StartLoading();
@@ -64,7 +64,7 @@ namespace DenpadokeiFramework.Services
         /// </summary>
         /// <param name="func">正常終了なら<see cref="true"/>を返し、異常終了なら<see cref="false"/>を返す処理</param>
         /// <param name="reLoad">読み込み終了後に行う処理<see cref="Action"/></param>
-        public virtual async void Load(Func<bool> func, Action reLoad)
+        public virtual async Task LoadAsync(Func<bool> func, Action reLoad)
         {
             try {
                 this.StartLoading();
@@ -81,7 +81,7 @@ namespace DenpadokeiFramework.Services
                     param.Add("Message", "失敗しました。");
                     this.dialogService_?.Show("ConfimationDialog", param, _ => { });
                 }
-                this.Load(reLoad);
+                var nowait = this.LoadAsync(reLoad);
             }
             catch (Exception e) {
                 Debug.WriteLine(e);
